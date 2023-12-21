@@ -867,7 +867,8 @@ async def __connect_addr(
         )
 
     elif params.connector_factory:
-        connector = params.connector_factory(proto_factory, *addr, loop=loop)
+        connector = params.connector_factory(
+                proto_factory, *addr, loop=loop, ssl=params.ssl)
 
     elif params.ssl:
         connector = _create_ssl_connection(
